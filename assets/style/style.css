@@ -1,0 +1,338 @@
+*
+{
+    margin: 0 auto;
+    width: 1300px;
+    font-family: Lato;
+}
+
+body
+{
+    margin-top: 30px;
+}
+
+.logo
+{
+    width: 300px;
+    height: 100px;
+    margin-left: 39%;
+}
+
+#search-input
+{
+    display: flex;
+    align-items: center;
+    background-color: #E7E7E7;
+    height: 60px;
+    margin-top: 20px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+#search-input input
+{
+    font-size: 22px;
+    height: 60px;
+    width: 1300px;
+    background-color: #E7E7E7;
+    border: none;
+    border-radius: 5px;
+    padding-left: 30px;
+    border :none;
+}
+
+#search-input i
+{
+    display: flex;
+    width: 0;
+    position: absolute;
+    right: 345px;
+}
+
+/**********FILTER BOXES*********/
+#filters
+{
+    display:flex;
+    left: 0;
+}
+
+/**********INGREDIENTS ***********/
+.ingredients_tag
+{
+    margin-left:0;
+    margin-right:30px;
+    width: 170px;
+    max-width: 667px;
+}
+
+.template
+{
+    margin-left: 0;
+}
+.ingredients
+{
+    background-color: #3282F7;
+    font-weight: bold;
+    color: white;
+    width: 170px;
+    height :69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+}
+
+.ingredients header
+{
+    display: flex;
+    width: 170px;
+    padding: 10px;
+    align-items: center;
+}
+
+.ingredients header h2
+{
+    font-weight: normal;
+    font-size: 18px;
+    margin-right: 0;
+}
+
+.ingredients header .fa-angle-up
+{
+    display: none;
+}
+
+.ingredients input
+{
+    background-color: #3282F7;
+    border: none;
+    max-width: 667px;
+    width: 166px;
+    border-radius: 5px;
+    display: none;
+}
+
+.ingredients .list_ingredients 
+{
+    display: none;
+}
+/************APPAREILS*************/
+.appareils_tag
+{
+    margin-left:0;
+    margin-right:30px;
+    width: 170px;
+    max-width: 667px;
+}
+
+.template
+{
+    margin-left: 0;
+}
+.appareils
+{
+    background-color: #68D9A4;
+    font-weight: bold;
+    color: white;
+    width: 170px;
+    height :69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.appareils header
+{
+    display: flex;
+    width: 170px;
+    padding: 10px;
+    align-items: center;
+}
+
+.appareils header h2
+{
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.appareils header .fa-angle-up
+{
+    display: none;
+}
+
+.appareils input
+{
+    background-color:#68D9A4;
+    border: none;
+    max-width: 667px;
+    width: 166px;
+    border-radius: 5px;
+    display: none;
+}
+.appareils .list_appareils
+{
+    display: none;
+}
+/************USTENCILS***************/
+.ustenciles_tag
+{
+    margin-left:0;
+    margin-right:30px;
+    width: 170px;
+    max-width: 667px;
+}
+
+.template
+{
+    margin-left: 0;
+}
+.ustencils
+{
+    background-color: #ED6454;;
+    font-weight: bold;
+    color: white;
+    width: 170px;
+    height :69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.ustencils header
+{
+    display: flex;
+    width: 170px;
+    padding: 10px;
+    align-items: center;
+}
+
+.ustencils header h2
+{
+    font-weight: normal;
+    font-size: 18px;
+}
+.ustencils header .fa-angle-up
+{
+    display: none;
+}
+
+.ustencils input
+{
+    background-color:#ED6454;;
+    border: none;
+    max-width: 667px;
+    width: 166px;
+    border-radius: 5px;
+    display: none;
+}
+
+.ustencils .list_ustencils
+{
+    display: none;
+}
+/**********ARTICLES*********/
+
+#recipes_cards
+{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 80px;
+    grid-row-gap: 50px;
+    grid-template-rows: auto;
+    margin-top: 20px;
+}
+
+article
+{
+    width: 380px;
+    min-height: 364px;
+    border-radius: 5px;
+    background-color: #E7E7E7;
+}
+
+.blank-space
+{
+    background-color: #C7BEBE;
+    height : 178px;
+    width: 380px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#recipes_cards header
+{
+    display: flex;
+    width: 380px;
+    padding-top: 10px;
+    background-color: #E7E7E7;
+    padding-left: 10px;
+    padding-right: 10px;
+    width :360px;
+    padding-top: 20px;
+}
+#recipes_cards .informations
+{
+    background-color: #E7E7E7;
+    width: 380px;
+    display: flex;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 45px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#recipes_cards header h2 
+{
+    display: flex;
+    width: 285px;
+    font-size: 18px;
+    margin-left: 0;
+}
+
+#recipes_cards header h3 {
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+#recipes_cards header .duration-icon {
+    display: flex;
+    width: 23px;
+    align-items: center;
+}
+
+#recipes_cards .ingredients
+{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#recipes_cards .ingredients_detailed_bloc
+{
+    width: 190px;
+    margin-left: 10px;
+}
+
+#recipes_cards .ingredients_detailed_bloc p
+{
+    width: 160px;
+    margin-left: 0px;
+}
+#recipes_cards .description
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    padding-right: 15px;
+    text-align:justify;
+    width: 220px;
+}
+
+.is-hidden { display: none; }
