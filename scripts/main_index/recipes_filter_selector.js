@@ -83,7 +83,6 @@ function showAppliance (){
     const applianceListedBloc = document.createElement('div')
     applianceListedBloc.className ='list_appareils';
 
-
     //APPEND SECTION
     applianceBox[0].appendChild(template);
     template.appendChild(article);
@@ -132,7 +131,7 @@ function showUstensils (){
     inputUstencils.setAttribute('placeholder', "Appareils à selectioner")
 
     const ustencilsListedBloc = document.createElement('div')
-    ustencilsListedBloc.className ='list_appareils';
+    ustencilsListedBloc.className ='list_ustencils';
 
 
     //APPEND SECTION
@@ -151,8 +150,66 @@ function showUstensils (){
 }
 showUstensils();
 
-/* async function getIngredientsData() {
+const fillFiltersAll = (recipes) => {
+    let ingredientBlocAppend = document.querySelector(".list_ingredients");
+    let applianceBlocAppend = document.querySelector(".list_appareils");
+    let ustencilsBlocAppend = document.querySelector(".list_ustencils");
+    console.log(ingredientBlocAppend);
+
+    let ingredientsList = [];
+    let ustencilsList = [];
+    let applianceList = [];
+    
+    ingredientBlocAppend.innerHTML ="";
+    applianceBlocAppend.innerHTML ="";
+    ustencilsBlocAppend.innerHTML ="";
+
+    for(let i=0; i<recipes.length; i++) {
+        console.log('boucle 1');
+        //ingrédients
+        for(let j=0; j<recipes[i].ingredients.length; j++) {
+            if(ingredientsList.includes(recipes[i].ingredients[j].ingredient) === false) {
+                ingredientsList.push(recipes[i].ingredients[j].ingredient);
+                let filterItem = document.createElement('span');
+                filterItem.classList.add('filter-item');
+                filterItem.innerText = recipes[i].ingredients[j].ingredient;
+                ingredientBlocAppend.appendChild(filterItem);
+            }
+        }
+        //appareils
+            console.log('boucle 2');
+            if (applianceList.includes(recipes[i].appliance) === false) {
+                applianceList.push(recipes[i].appliance);
+                let filterItem = document.createElement('span');
+                filterItem.classList.add('filter-item');
+                filterItem.innerText = recipes[i].appliance;
+                applianceBlocAppend.appendChild(filterItem);
+                }
+        //ustensiles
+        for(let j=0; j<recipes[i].ustensils.length; j++) {
+            if (ustencilsList.includes(recipes[i].ustensils[j]) === false) {
+                ustencilsList.push(recipes[i].ustensils[j]);
+                let filterItem = document.createElement('span');
+                filterItem.classList.add('filter-item');
+                filterItem.innerText = recipes[i].ustensils[j];
+                ustencilsBlocAppend.appendChild(filterItem);
+                }
+            }
+        }
+
+}
+
+async function getDataRecipes() {
     const response = await fetch ("data/recipes.json");
-    const ingredients = response.ingredients;
-    return ({ recipes: [ingredients] });
-}*/
+    return await response.json();
+    //return ({ recipes: [ingredients] });
+    //return ({ recipes: [recipes [ingredients]]});
+}
+
+async function init(){
+    const { recipes } = await getDataRecipes();
+    console.log(recipes);
+    fillFiltersAll(recipes);
+}
+
+init();
