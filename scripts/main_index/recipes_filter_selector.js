@@ -5,9 +5,11 @@ function showIngredients (){
     template.className='template';
 
     const article = document.createElement( 'div' );
-    article.className = 'ingredients';
+    article.className = 'ingredients_close';
+    //article.style.display='none';
 
     const headerIngr = document.createElement('header');
+    headerIngr.className = 'headUstensils';
     
     const title = document.createElement('h2');
     title.textContent = 'Ingredients';
@@ -17,13 +19,14 @@ function showIngredients (){
     spanAngle.className='angle-down';
 
     const arrow = document.createElement('i');
-    arrow.className="fa-solid fa-angle-down";
+    arrow.className="fa-solid fa-angle-down fa-lg";
 
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
 
     const arrowUp = document.createElement('i');
-    arrowUp.className="fa-solid fa-angle-up";
+    arrowUp.className="fa-solid fa-angle-up fa-lg";
+    arrowUp.style.display='none';
 
     const inputIng = document.createElement ('input');
     inputIng.className='input_ingredients';
@@ -31,6 +34,29 @@ function showIngredients (){
 
     const ingredientsListedBloc = document.createElement('div')
     ingredientsListedBloc.className ='list_ingredients';
+    ingredientsListedBloc.style.display = "none";
+
+    arrow.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-down fa-lg') {
+            article.classList.remove('ingredients_close');
+            article.classList.add('ingredients');
+            headerIngr.style.display='none';
+            arrow.style.display='none';
+            arrowUp.style.display='flex';
+            template.style.width= "828px"
+            ingredientsListedBloc.style.display = "flex";
+        }});
+
+    arrowUp.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-up fa-lg') {
+            article.classList.remove('ingredients');
+            article.classList.add('ingredients_close');
+            inputIng.style.display='none';
+            ingredientsListedBloc.style.display="none";
+            headerIngr.style.display='flex';
+            arrow.style.display='flex';
+            arrowUp.style.display='none';
+        }});
 
     //APPEND SECTION
     ingredientBox[0].appendChild(template);
@@ -38,16 +64,15 @@ function showIngredients (){
     article.appendChild(headerIngr);
     headerIngr.appendChild(title);
     headerIngr.appendChild(spanAngle);
-    headerIngr.appendChild(arrow);
-    headerIngr.appendChild(hiddenAngle);
-    headerIngr.appendChild(arrowUp);
+    spanAngle.appendChild(arrow);
+    article.appendChild(hiddenAngle);
+    hiddenAngle.appendChild(arrowUp);
     article.appendChild(inputIng);
     article.appendChild(ingredientsListedBloc);
 
     return (article);
 }
 
-showIngredients();
 
 function showAppliance (){
     getDataJson();
@@ -55,10 +80,15 @@ function showAppliance (){
     const template = document.createElement('div');
     template.className='template';
 
-    const article = document.createElement( 'div' );
+    const closeArticle = document.createElement ('div');
+    closeArticle.className = "appareils_close";
+
+    const article = document.createElement('div');
     article.className = 'appareils';
+    article.style.display='none';
 
     const headerAppliance = document.createElement('header');
+    headerAppliance.className = 'headAppliance';
     
     const title = document.createElement('h2');
     title.textContent = 'Appareils';
@@ -68,16 +98,28 @@ function showAppliance (){
     spanAngle.className='angle-down';
 
     const arrow = document.createElement('i');
-    arrow.className="fa-solid fa-angle-down";
+    arrow.className="fa-solid fa-angle-down fa-lg";
 
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
 
     const arrowUp = document.createElement('i');
-    arrowUp.className="fa-solid fa-angle-up";
+    arrowUp.className="fa-solid fa-angle-up fa-lg";
+
+    arrow.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-down fa-lg') {
+            closeArticle.style.display='none';
+            article.style.display='block';
+        }});
+
+    arrowUp.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-up fa-lg') {
+            article.style.display='none';
+            closeArticle.style.display='block';
+        }});
 
     const inputAppliance = document.createElement ('input');
-    inputAppliance.className='input_ingredients';
+    inputAppliance.className='input_appliance';
     inputAppliance.setAttribute('placeholder', "Appareils à selectioner")
 
     const applianceListedBloc = document.createElement('div')
@@ -85,19 +127,20 @@ function showAppliance (){
 
     //APPEND SECTION
     applianceBox[0].appendChild(template);
+    template.appendChild(closeArticle);
     template.appendChild(article);
-    article.appendChild(headerAppliance);
+    closeArticle.appendChild(headerAppliance);
     headerAppliance.appendChild(title);
     headerAppliance.appendChild(spanAngle);
-    headerAppliance.appendChild(arrow);
-    headerAppliance.appendChild(hiddenAngle);
-    headerAppliance.appendChild(arrowUp);
+    spanAngle.appendChild(arrow);
+    article.appendChild(hiddenAngle);
+    hiddenAngle.appendChild(arrowUp);
     article.appendChild(inputAppliance);
     article.appendChild(applianceListedBloc);
 
     return (article);
 }
-showAppliance();
+
 
 function showUstensils (){
     getDataJson();
@@ -105,12 +148,17 @@ function showUstensils (){
     const template = document.createElement('div');
     template.className='template';
 
+    const closeArticle = document.createElement ('div');
+    closeArticle.className = "ustencils_close";
+
     const article = document.createElement('div');
     article.className = 'ustencils';
+    article.style.display='none';
 
     const headerUstensils = document.createElement('header');
+    headerUstensils.className = 'headUstensils';
     
-    const title = document.createElement('h2');
+    const title = document.createElement('h2'); 
     title.textContent = 'Ustenciles';
     title.className = 'nom';
 
@@ -118,13 +166,29 @@ function showUstensils (){
     spanAngle.className='angle-down';
 
     const arrow = document.createElement('i');
-    arrow.className="fa-solid fa-angle-down";
-
+    arrow.className="fa-solid fa-angle-down fa-lg";
+    
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
 
     const arrowUp = document.createElement('i');
-    arrowUp.className="fa-solid fa-angle-up";
+    arrowUp.className="fa-solid fa-angle-up fa-lg";
+
+    arrow.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-down fa-lg') {
+            //e.target.className = 'ustencils';
+            closeArticle.style.display='none';
+            article.style.display='block';
+        }});
+
+    arrowUp.addEventListener ('click', function (e){
+        if (e.target.className == 'fa-solid fa-angle-up fa-lg') {
+            //e.target.className = 'ustencils';
+            article.style.display='none';
+            closeArticle.style.display='block';
+        }});
+
+    console.log (closeArticle, 'toto');
 
     const inputUstencils = document.createElement ('input');
     inputUstencils.className='input_ingredients';
@@ -133,28 +197,27 @@ function showUstensils (){
     const ustencilsListedBloc = document.createElement('div')
     ustencilsListedBloc.className ='list_ustencils';
 
-
     //APPEND SECTION
     ustencilsBox[0].appendChild(template);
+    template.appendChild(closeArticle);
     template.appendChild(article);
-    article.appendChild(headerUstensils);
+    closeArticle.appendChild(headerUstensils);
     headerUstensils.appendChild(title);
     headerUstensils.appendChild(spanAngle);
-    headerUstensils.appendChild(arrow);
-    headerUstensils.appendChild(hiddenAngle);
-    headerUstensils.appendChild(arrowUp);
+    spanAngle.appendChild(arrow);
+    article.appendChild(hiddenAngle);
+    hiddenAngle.appendChild(arrowUp);
     article.appendChild(inputUstencils);
     article.appendChild(ustencilsListedBloc);
 
     return (article);
 }
-showUstensils();
+
 
 const fillFiltersAll = (recipes) => {
     let ingredientBlocAppend = document.querySelector(".list_ingredients");
     let applianceBlocAppend = document.querySelector(".list_appareils");
     let ustencilsBlocAppend = document.querySelector(".list_ustencils");
-    console.log(ingredientBlocAppend);
 
     let ingredientsList = [];
     let ustencilsList = [];
@@ -165,7 +228,6 @@ const fillFiltersAll = (recipes) => {
     ustencilsBlocAppend.innerHTML ="";
 
     for(let i=0; i<recipes.length; i++) {
-        console.log('boucle 1');
         //ingrédients
         for(let j=0; j<recipes[i].ingredients.length; j++) {
             if(ingredientsList.includes(recipes[i].ingredients[j].ingredient) === false) {
@@ -173,18 +235,18 @@ const fillFiltersAll = (recipes) => {
                 let filterItem = document.createElement('span');
                 filterItem.classList.add('filter-item');
                 filterItem.innerText = recipes[i].ingredients[j].ingredient;
+                var br = document.createElement("br");
                 ingredientBlocAppend.appendChild(filterItem);
             }
         }
         //appareils
-            console.log('boucle 2');
             if (applianceList.includes(recipes[i].appliance) === false) {
                 applianceList.push(recipes[i].appliance);
                 let filterItem = document.createElement('span');
                 filterItem.classList.add('filter-item');
                 filterItem.innerText = recipes[i].appliance;
                 applianceBlocAppend.appendChild(filterItem);
-                }
+            }
         //ustensiles
         for(let j=0; j<recipes[i].ustensils.length; j++) {
             if (ustencilsList.includes(recipes[i].ustensils[j]) === false) {
@@ -193,23 +255,23 @@ const fillFiltersAll = (recipes) => {
                 filterItem.classList.add('filter-item');
                 filterItem.innerText = recipes[i].ustensils[j];
                 ustencilsBlocAppend.appendChild(filterItem);
-                }
             }
         }
+    }
+    console.log(ingredientBlocAppend);
 
 }
 
 async function getDataRecipes() {
     const response = await fetch ("data/recipes.json");
     return await response.json();
-    //return ({ recipes: [ingredients] });
-    //return ({ recipes: [recipes [ingredients]]});
 }
 
 async function init(){
+    showIngredients();
+    showAppliance();
+    showUstensils();
     const { recipes } = await getDataRecipes();
-    console.log(recipes);
     fillFiltersAll(recipes);
 }
-
 init();
