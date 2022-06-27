@@ -37,7 +37,9 @@ body
     border-radius: 5px;
     padding-left: 30px;
     border :none;
+    outline: none;
 }
+
 
 #search-input i
 {
@@ -52,26 +54,85 @@ body
 {
     display:flex;
     left: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap : 30px;
+    flex-grow: 4;
+    position: relative;
 }
 
+.template input::placeholder
+{
+    color: rgba(255, 255, 255, 0.527);
+}
 /**********INGREDIENTS ***********/
 .ingredients_tag
 {
     margin-left:0;
-    margin-right:30px;
-    width: 170px;
+    margin-right: 0;
+    width: auto;
     max-width: 667px;
+    border: none;
 }
 
 .template
 {
     margin-left: 0;
+    width: 170px;
+    float: left;
+    overflow: hidden;
 }
+
+.ingredients_close
+{
+    background-color: #3282F7;
+    font-weight: bold;
+    color:  #ffffff;
+    width: 170px;
+    height :69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.ingredients_close header
+{
+    display: flex;
+    width: 170px;
+    height:69px;
+    padding-left: 10px;
+    align-items: center;
+}
+
+.ingredients_close header h2
+{
+    font-weight: normal;
+    font-size: 18px;
+}
+.ingredients_close .angle-down
+{
+    font-weight: normal;
+    font-size: 18px;
+    width: 50px;
+}
+
+.ingredients .angle-up
+{
+    position: absolute;
+    left:625px;
+    color: rgb(255, 255, 255);
+    margin-top : 30px;
+    width: 15px;
+    z-index: 100;
+    cursor: pointer;
+}
+
 .ingredients
 {
     background-color: #3282F7;
     font-weight: bold;
-    color: white;
+    color: rgb(255, 255, 255);
     width: 170px;
     height :69px;
     border-radius: 5px; 
@@ -79,14 +140,8 @@ body
     margin-left: 0;
     margin-right: 0;
     margin-top: 10px;
-}
-
-.ingredients header
-{
-    display: flex;
-    width: 170px;
-    padding: 10px;
-    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .ingredients header h2
@@ -104,23 +159,48 @@ body
 .ingredients input
 {
     background-color: #3282F7;
+    color: white;
     border: none;
-    max-width: 667px;
-    width: 166px;
-    border-radius: 5px;
-    display: none;
+    width: 654px;
+    height: 60px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    position: absolute;
+    font-size: 18px;
+    padding-left: 10px;
+    outline: none;
 }
 
 .ingredients .list_ingredients 
 {
-    display: none;
+    background-color: #3282F7;
+    width : 666px;   
+    flex-wrap: wrap;
+    flex: 0 0 30%;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    position : absolute;
+    height: 275px;
+    overflow: hidden;
+    margin-top: 60px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.ingredients .list_ingredients span
+{
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
 }
 /************APPAREILS*************/
 .appareils_tag
 {
     margin-left:0;
-    margin-right:30px;
-    width: 170px;
+    margin-right: 0;
+    width: auto;
     max-width: 667px;
 }
 
@@ -128,7 +208,8 @@ body
 {
     margin-left: 0;
 }
-.appareils
+
+.appareils_close
 {
     background-color: #68D9A4;
     font-weight: bold;
@@ -141,18 +222,54 @@ body
     margin-top: 10px;
 }
 
-.appareils header
+.appareils_close header
 {
     display: flex;
     width: 170px;
-    padding: 10px;
+    height: 69px;
+    padding-left: 10px;
     align-items: center;
 }
 
-.appareils header h2
+.appareils_close header h2
 {
     font-weight: normal;
     font-size: 18px;
+}
+
+.appareils_close .angle-down
+{
+    font-weight: normal;
+    font-size: 18px;
+    width: 50px;
+}
+
+.appareils .angle-up
+{
+    position: absolute;
+    left:825px;
+    color: rgb(255, 255, 255);
+    margin-top : 30px;
+    width: 15px;
+    margin-right: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.appareils
+{
+    background-color:#68D9A4;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    width: 170px;
+    height:69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .appareils header .fa-angle-up
@@ -163,15 +280,40 @@ body
 .appareils input
 {
     background-color:#68D9A4;
-    border: none;
-    max-width: 667px;
-    width: 166px;
-    border-radius: 5px;
-    display: none;
+    border : none;
+    width: 654px;
+    height: 60px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    position: absolute;
+    font-size: 18px;
+    padding-left: 10px;
+    outline: none;
 }
 .appareils .list_appareils
 {
+    background-color:#68D9A4;
     display: none;
+    position : absolute;
+    width : 666px;   
+    flex-wrap: wrap;
+    flex: 0 0 30%;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    position : absolute;
+    height: 175px;
+    overflow: hidden;
+    margin-top: 60px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.appareils .list_appareils span
+{
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
 }
 /************USTENCILS***************/
 .ustenciles_tag
@@ -185,8 +327,9 @@ body
 .template
 {
     margin-left: 0;
+    width: 170px;
 }
-.ustencils
+.template .ustencils
 {
     background-color: #ED6454;;
     font-weight: bold;
@@ -199,38 +342,99 @@ body
     margin-top: 10px;
 }
 
-.ustencils header
+.ustencils_close
+{
+    background-color: #ED6454;
+    font-weight: bold;
+    color:  #ffffff;
+    width: 170px;
+    height :69px;
+    border-radius: 5px; 
+    align-items: center;
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.ustencils_close header
 {
     display: flex;
     width: 170px;
-    padding: 10px;
+    height:69px;
+    padding-left: 10px;
     align-items: center;
 }
 
-.ustencils header h2
+.ustencils_close header h2
 {
     font-weight: normal;
     font-size: 18px;
 }
-.ustencils header .fa-angle-up
+.ustencils_close .angle-down
 {
-    display: none;
+    font-weight: normal;
+    font-size: 18px;
+    width: 50px;
+}
+.ustencils .angle-up
+{
+    position: absolute;
+    right:260px;
+    color: rgb(255, 255, 255);
+    margin-top : 30px;
+    width: 15px;
+    margin-right: 0;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.angle-up i
+{
+    margin-right: 0;
+    width : 15px;
+    z-index: 100;
+    position: absolute;
 }
 
 .ustencils input
 {
-    background-color:#ED6454;;
-    border: none;
-    max-width: 667px;
-    width: 166px;
+    background-color:#ED6454;
+    color: white;
+    border : none;
+    width: 654px;
     border-radius: 5px;
-    display: none;
+    position: absolute;
+    font-size: 18px;
+    padding-left: 10px;
+    height: 60px;
+    outline: none;
 }
 
 .ustencils .list_ustencils
 {
+    background-color:#ED6454;
     display: none;
+    position : absolute;
+    width : 666px;   
+    flex-wrap: wrap;
+    flex: 0 0 30%;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    position : absolute;
+    height: 275px;
+    overflow: hidden;
+    margin-top: 60px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
+.ustencils .list_ustencils span
+{
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    cursor: pointer;
+}
+
 /**********ARTICLES*********/
 
 #recipes_cards
@@ -335,4 +539,7 @@ article
     width: 220px;
 }
 
-.is-hidden { display: none; }
+.is-hidden 
+{ 
+    display: none; 
+}
