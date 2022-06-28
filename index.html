@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="assets/style/style.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5f2e0ae9aa.js" crossorigin="anonymous"></script>
     <title>Les Petits Plats</title>
   </head>
@@ -18,18 +18,28 @@
           <div id="search-input">
             <input type="text" name="input" id="dataInput" placeholder="Rechercher une recette" size="30" maxlength="10" />
             <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+          </div> 
+          <div id="tags_selected">
+            <div class="ingredients_tags_wrapper"></div>
+            <div class="appliance_tags_wrapper"></div>
+            <div class="ustensil_tags_wrapper"></div>
           </div>
           <div id="filters">
-            <div class="ingredients_tag"></div>
-            <div class="appareils_tag"></div>
-            <div class="ustenciles_tag"></div>
+            <div class="ingredients_tag" class ="filter">
+            </div>
+            <div class="appareils_tag" class = "filter">
+            </div>
+            <div class="ustenciles_tag" class = "filter">
+            </div>
           </div>
           <div id="recipes_cards"></div>
           <div id="update"></div>
       </main>
       <script src="scripts/main_index/index.js"></script>
       <script src="scripts/main_index/recipes_cards.js"></script>
-      <script src="scripts/main_index/recipes_input_selector.js"></script>
-      <script src="scripts/main_index/recipes_filter_selector.js"></script>
+      <script src="scripts/utils/recipes_input_selector.js"></script>
+      <script src="scripts/utils/recipes_filter_selector.js"></script>
+      <script src="scripts/utils/recipes_inside_filter_input.js"></script>
+      <script src="scripts/utils/tags_generator.js"></script>
   </body>
 </html>
