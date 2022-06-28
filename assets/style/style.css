@@ -189,11 +189,15 @@ body
 }
 .ingredients .list_ingredients span
 {
-    display: inline-block;
     width: 30%;
     padding: 10px;
     cursor: pointer;
     position: relative;
+    margin-left: 0;
+}
+.ingredients .list_ingredients span:hover
+{
+    text-decoration: underline;
 }
 /************APPAREILS*************/
 .appareils_tag
@@ -280,6 +284,7 @@ body
 .appareils input
 {
     background-color:#68D9A4;
+    color: white;
     border : none;
     width: 654px;
     height: 60px;
@@ -310,11 +315,17 @@ body
 }
 .appareils .list_appareils span
 {
-    display: inline-block;
     width: 30%;
     padding: 10px;
     cursor: pointer;
+    margin-left: 0;
 }
+
+.appareils .list_appareils span:hover
+{
+    text-decoration: underline;
+}
+
 /************USTENCILS***************/
 .ustenciles_tag
 {
@@ -429,10 +440,15 @@ body
 }
 .ustencils .list_ustencils span
 {
-    display: inline-block;
     width: 30%;
     padding: 10px;
     cursor: pointer;
+    margin-left: 0;
+}
+
+.ustencils .list_ustencils span:hover
+{
+    text-decoration: underline;
 }
 
 /**********ARTICLES*********/
