@@ -19,6 +19,7 @@ function showIngredients (){
 
     const arrow = document.createElement('i');
     arrow.className="fa-solid fa-angle-down fa-lg";
+    arrow.style.cursor ='pointer';
 
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
@@ -28,6 +29,7 @@ function showIngredients (){
     arrowUp.style.display='none';
 
     const inputIng = document.createElement ('input');
+    inputIng.setAttribute('id', 'ingredient-input');
     inputIng.className='input_ingredients';
     inputIng.setAttribute('placeholder', "Selectionner un ingrédient...")
 
@@ -45,7 +47,7 @@ function showIngredients (){
             arrowUp.style.display='flex';
             template.style.width= "828px"
             ingredientsListedBloc.style.display = "flex";
-            getDetailedFilter();
+            getInputIngredient();
         }});
 
     arrowUp.addEventListener ('click', function (e){
@@ -97,6 +99,7 @@ function showAppliance (){
 
     const arrow = document.createElement('i');
     arrow.className="fa-solid fa-angle-down fa-lg";
+    arrow.style.cursor ='pointer';
 
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
@@ -106,6 +109,7 @@ function showAppliance (){
     arrowUp.style.display='none';
 
     const inputAppliance = document.createElement ('input');
+    inputAppliance.setAttribute('id', 'appliance-input');
     inputAppliance.className='input_appliance';
     inputAppliance.setAttribute('placeholder', "Selectionner un appareil...")
 
@@ -123,6 +127,7 @@ function showAppliance (){
             arrowUp.style.display='flex';
             template.style.width= "828px"
             applianceListedBloc.style.display = "flex";
+            getInputAppliance();
         }});
 
     arrowUp.addEventListener ('click', function (e){
@@ -174,6 +179,7 @@ function showUstensils (){
 
     const arrow = document.createElement('i');
     arrow.className="fa-solid fa-angle-down fa-lg";
+    arrow.style.cursor ='pointer';
     
     const hiddenAngle = document.createElement('span');
     hiddenAngle.className='angle-up';
@@ -183,7 +189,8 @@ function showUstensils (){
     arrowUp.style.display = "none";
 
     const inputUstencils = document.createElement ('input');
-    inputUstencils.className='input_ingredients';
+    inputUstencils.setAttribute('id', 'ustencils-input');
+    inputUstencils.className='input_ustencils';
     inputUstencils.setAttribute('placeholder', "Selectionner un ustencile...")
 
     const ustencilsListedBloc = document.createElement('div')
@@ -200,6 +207,7 @@ function showUstensils (){
             arrowUp.style.display='flex';
             template.style.width= "828px"
             ustencilsListedBloc.style.display = "flex";
+            getInputUstencil();
         }});
 
     arrowUp.addEventListener ('click', function (e){
@@ -249,7 +257,7 @@ const fillFiltersAll = (recipes) => {
             if(ingredientsList.includes(recipes[i].ingredients[j].ingredient) === false) {
                 ingredientsList.push(recipes[i].ingredients[j].ingredient);
                 let filterItem = document.createElement('span');
-                filterItem.classList.add('filter-item');
+                filterItem.classList.add('filter-item-ingredient');
                 filterItem.innerText = recipes[i].ingredients[j].ingredient;
                 var br = document.createElement("br");
                 ingredientBlocAppend.appendChild(filterItem);
@@ -259,7 +267,7 @@ const fillFiltersAll = (recipes) => {
             if (applianceList.includes(recipes[i].appliance) === false) {
                 applianceList.push(recipes[i].appliance);
                 let filterItem = document.createElement('span');
-                filterItem.classList.add('filter-item');
+                filterItem.classList.add('filter-item-appliance');
                 filterItem.innerText = recipes[i].appliance;
                 applianceBlocAppend.appendChild(filterItem);
             }
@@ -268,7 +276,7 @@ const fillFiltersAll = (recipes) => {
             if (ustencilsList.includes(recipes[i].ustensils[j]) === false) {
                 ustencilsList.push(recipes[i].ustensils[j]);
                 let filterItem = document.createElement('span');
-                filterItem.classList.add('filter-item');
+                filterItem.classList.add('filter-item-ustencils');
                 filterItem.innerText = recipes[i].ustensils[j];
                 ustencilsBlocAppend.appendChild(filterItem);
             }
@@ -280,25 +288,7 @@ async function getDataRecipes() {
     const response = await fetch ("data/recipes.json");
     return await response.json();
 }
-
-async function getDetailedFilter(){
-    getDataRecipes();
-    const filterRender = document.querySelectorAll('list_ingredients span');
-    let cards = document.querySelectorAll('list_ingredients span');
-    let search_query = document.querySelectorAll("input_ingredients");
-    console.log(search_query);
-    for (var i = 0; i < cards.length; i++) {
-      if(cards[i].innerText.toLowerCase()
-        .includes(search_query.toLowerCase())) {
-          cards[i].classList.remove("is-hidden");
-      } else {
-        cards[i].classList.add("is-hidden");
-      }
-    }
-    return(filterRender);
-}
-
-  
+ 
 async function init(){
     showIngredients();
     showAppliance();
