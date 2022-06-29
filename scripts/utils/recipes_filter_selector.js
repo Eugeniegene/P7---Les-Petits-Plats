@@ -48,6 +48,7 @@ function showIngredients (){
             template.style.width= "828px"
             ingredientsListedBloc.style.display = "flex";
             getInputIngredient();
+            addTagFilterIngredients();
         }});
 
     arrowUp.addEventListener ('click', function (e){
@@ -128,6 +129,7 @@ function showAppliance (){
             template.style.width= "828px"
             applianceListedBloc.style.display = "flex";
             getInputAppliance();
+            addTagFilterAppliance();
         }});
 
     arrowUp.addEventListener ('click', function (e){
@@ -208,6 +210,7 @@ function showUstensils (){
             template.style.width= "828px"
             ustencilsListedBloc.style.display = "flex";
             getInputUstencil();
+            addTagFilterUstencils();
         }});
 
     arrowUp.addEventListener ('click', function (e){
