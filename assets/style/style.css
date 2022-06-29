@@ -559,3 +559,81 @@ article
 { 
     display: none; 
 }
+
+/*********FILTERS********/
+
+#tags_selected
+{
+    left: 0;
+    top: 0;
+    margin-top: 10px;
+    display: flex;
+}
+
+.ingredients_tags_wrapper
+{
+    left: 0;
+    width: 170px;
+    margin-left: 0px;
+    margin-right: 20px;
+}
+#tags_selected .ingredients_tags_wrapper #ingredient-tag 
+{
+    background-color: #3282F7;
+    height : 20px;
+    width: 150px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.deleteIcon
+{
+    margin-left: 150px;
+    margin-top: -29px;
+    color: white;
+    margin-right: 0;
+    width: 40px;
+    position: absolute;
+    z-index: 100;
+}
+
+.appliance_tags_wrapper
+{
+    left: 0;
+    width: 170px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+#tags_selected .appliance_tags_wrapper #appliance-tag 
+{
+    background-color:#68D9A4;
+    height : 20px;
+    width: 150px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.ustensil_tags_wrapper
+{
+    left: 0;
+    width: 171px;
+    margin-left: 10px;
+    margin-right: 0;
+}
+#tags_selected .ustensil_tags_wrapper #ustencils-tag 
+{
+    background-color:#ED6454;
+    height : 20px;
+    width: 150px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
