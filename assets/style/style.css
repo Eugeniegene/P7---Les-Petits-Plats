@@ -577,29 +577,32 @@ article
     margin-left: 0px;
     margin-right: 20px;
 }
-#tags_selected .ingredients_tags_wrapper #ingredient-tag 
+#tags_selected .ingredients_tags_wrapper .ingredient-tag 
 {
     background-color: #3282F7;
-    height : 20px;
+    height : auto;
     width: 150px;
     color: white;
     margin-top: 10px;
     margin-left: 0px;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    position: relative; 
 }
 
 .deleteIcon
 {
-    margin-left: 150px;
-    margin-top: -29px;
     color: white;
     margin-right: 0;
     width: 40px;
-    position: absolute;
     z-index: 100;
 }
 
+.fa-circle-xmark
+{
+    width: 50px;
+}
 .appliance_tags_wrapper
 {
     left: 0;
@@ -607,16 +610,18 @@ article
     margin-left: 10px;
     margin-right: 20px;
 }
-#tags_selected .appliance_tags_wrapper #appliance-tag 
+#tags_selected .appliance_tags_wrapper .appliance-tag 
 {
     background-color:#68D9A4;
-    height : 20px;
+    height : auto;
     width: 150px;
     color: white;
     margin-top: 10px;
     margin-left: 0px;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    position: relative; 
 }
 
 .ustensil_tags_wrapper
@@ -626,14 +631,17 @@ article
     margin-left: 10px;
     margin-right: 0;
 }
-#tags_selected .ustensil_tags_wrapper #ustencils-tag 
+#tags_selected .ustensil_tags_wrapper .ustencils-tag 
 {
     background-color:#ED6454;
-    height : 20px;
+    height : auto;
     width: 150px;
     color: white;
     margin-top: 10px;
     margin-left: 0px;
     padding: 10px;
     border-radius: 5px;
+    display: flex;
+    position: relative; 
+    justify-content: space-between;
 }
