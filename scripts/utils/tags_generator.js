@@ -2,7 +2,9 @@ const tagsBloc = document.getElementById('tags_selected');
 const filterItemIngredients = document.getElementsByClassName('filter-item-ingredient');
 const filterItemAppliance = document.getElementsByClassName('filter-item-appliance');
 const filterItemUstencils = document.getElementsByClassName('filter-item-ustencils');
-
+let tagIngredientAlreadyAdded = false;
+let tagApplianceAlreadyAdded = false;
+let tagUstencilAlreadyAdded = false;
 /*****TAGS WRAPPERS ****/
 let ingredientTagsWrapper = document.querySelector('.ingredients_tags_wrapper');
 let applianceTagsWrapper = document.querySelector('.appliance_tags_wrapper');
@@ -15,70 +17,100 @@ let ustencilsTags=[];
 
 /*******ADD TAG FOR FILTERS WITH DELETE TAG EVENT*******/
 function addTagFilterIngredients(){
+    if (tagIngredientAlreadyAdded == false) {
+        tagIngredientAlreadyAdded = true;
     for(let element of filterItemIngredients){
-        element.addEventListener('click', function (){
+        element.addEventListener('click', function (e){
             let tagIngredient = document.createElement('div');
-            tagIngredient.setAttribute('id', 'ingredient-tag');
+            tagIngredient.setAttribute('class', 'ingredient-tag');
             tagIngredient.classList.add('tagIngredient');
-            tagIngredient.innerHTML = "${ingredients}";
+            tagIngredient.innerHTML = e.target.outerHTML;
             let deleteTagIcon = document.createElement("span");
             deleteTagIcon.className="deleteIcon";
             let deleteIconImg = document.createElement('i');
             deleteIconImg.className='fa-regular fa-circle-xmark';
             deleteIconImg.style.cursor = 'pointer';
-            deleteTagIcon.addEventListener('click', function(){
-                this.parentNode.remove()
+            deleteIconImg.style.width= '20px';
+            deleteTagIcon.addEventListener('click', function(e){
+                console.log(tagIngredient);
+                tagIngredient.remove();
                 return false;
             })
             ingredientTagsWrapper.appendChild(tagIngredient);
-            ingredientTagsWrapper.appendChild(deleteTagIcon);
+            tagIngredient.appendChild(deleteTagIcon);
             deleteTagIcon.appendChild(deleteIconImg);
-            console.log(element.outerHTML + "test");
         });
     }
 }
+}
 function addTagFilterAppliance(){   
+    if (tagApplianceAlreadyAdded == false) {
+        tagApplianceAlreadyAdded = true;
     for(let element of filterItemAppliance){
-        element.addEventListener('click', function (){
+        element.addEventListener('click', function (e){
             let tagAppliance = document.createElement('div');
-            tagAppliance.setAttribute('id', 'appliance-tag');
+            tagAppliance.setAttribute('class', 'appliance-tag');
             tagAppliance.classList.add('tagAppliance');
-            tagAppliance.innerHTML = "${appliance}";
+            tagAppliance.innerHTML = e.target.outerHTML;
             let deleteTagIcon = document.createElement("span");
             deleteTagIcon.className="deleteIcon";
             let deleteIconImg = document.createElement('i');
             deleteIconImg.className='fa-regular fa-circle-xmark';
             deleteIconImg.style.cursor = 'pointer';
-            deleteTagIcon.addEventListener('click', function(){
-                this.parentNode.remove()
+            deleteIconImg.style.width= '20px';
+            deleteTagIcon.addEventListener('click', function(e){
+                tagAppliance.remove();
                 return false;
             })
             applianceTagsWrapper.appendChild(tagAppliance);
-            applianceTagsWrapper.appendChild(deleteTagIcon);
+            tagAppliance.appendChild(deleteTagIcon);
             deleteTagIcon.appendChild(deleteIconImg);
-            console.log(element.outerHTML + "test");
         });
     }
 }
+}
 function addTagFilterUstencils(){   
+    if (tagUstencilAlreadyAdded == false) {
+        tagUstencilAlreadyAdded = true;
     for(let element of filterItemUstencils){
-        element.addEventListener('click', function (){
+        element.addEventListener('click', function (e){
             let tagUstencils = document.createElement('div');
-            tagUstencils.setAttribute('id', 'ustencils-tag');
+            tagUstencils.setAttribute('class', 'ustencils-tag');
             tagUstencils.classList.add('tagUstencils');
-            tagUstencils.innerHTML = "${ustencils}";
+            tagUstencils.innerHTML = e.target.outerHTML;
             let deleteTagIcon = document.createElement("span");
             deleteTagIcon.className="deleteIcon";
             let deleteIconImg = document.createElement('i');
             deleteIconImg.className='fa-regular fa-circle-xmark';
-            deleteTagIcon.addEventListener('click', function(){
-                this.parentNode.remove()
+            deleteIconImg.style.cursor = 'pointer';
+            deleteIconImg.style.width= '20px';
+            deleteTagIcon.addEventListener('click', function(e){
+                tagUstencils.remove();
                 return false;
             })
             utensilTagsWrapper.appendChild(tagUstencils);
-            utensilTagsWrapper.appendChild(deleteTagIcon);
+            tagUstencils.appendChild(deleteTagIcon);
             deleteTagIcon.appendChild(deleteIconImg);
-            console.log(element.outerHTML + "test");
         });
     }
 }
+}
+/*********TAGS FILTERING RECIPES********/
+function filteredRecipesWithTags (filteredRecipes) {
+    taggedIngredientsDOM = Array.from(document.querySelectorAll('.ingredients_tags_wrapper .filter-item-ingredient .ingredient-tag'));
+    taggedAppliancesDOM = Array.from(document.querySelectorAll('.appliance_tags_wrapper .filter-item-appliance .appliance-tag'));
+    taggedUtensilsDOM = Array.from(document.querySelectorAll('.ustensil_tags_wrapper .filter-item-ustencils .ustencils-tag'));
+    let taggedIngredients = [];
+    let taggedAppliances = [];
+    let taggedUtensils = [];
+
+    for(let i=0; i<taggedIngredientsDOM.length; i++) {
+        taggedIngredients.push(taggedIngredientsDOM[i].innerText);
+    }
+    for(let i=0; i<taggedAppliancesDOM.length; i++) {
+        taggedAppliances.push(taggedAppliancesDOM[i].innerText);
+    }
+    for(let i=0; i<taggedUtensilsDOM.length; i++) {
+        taggedUtensils.push(taggedUtensilsDOM[i].innerText);
+    }
+};
