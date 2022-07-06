@@ -461,6 +461,7 @@ body
     grid-row-gap: 50px;
     grid-template-rows: auto;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 article
@@ -644,4 +645,13 @@ article
     display: flex;
     position: relative; 
     justify-content: space-between;
+}
+
+/* Error message */ 
+
+.no-result-message
+{
+    font-size: 25px;
+    font-weight: bold;
+    color: #92372d;
 }
