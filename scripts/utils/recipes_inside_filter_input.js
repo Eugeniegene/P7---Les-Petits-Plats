@@ -13,9 +13,8 @@ async function getDetailedFilterIngredients(){
     console.log(search_query);
     console.log(cards[0].innerText);
     for (var i = 0; i < cards.length; i++) {
-      if(cards[i].innerText.toLowerCase()
-        .includes(search_query.toLowerCase())) {
-          cards[i].classList.remove("is-hidden");
+      if(cards[i].innerText.toLowerCase().includes(search_query.toLowerCase())) {
+            cards[i].classList.remove("is-hidden");
       } else {
         cards[i].classList.add("is-hidden");
       }
