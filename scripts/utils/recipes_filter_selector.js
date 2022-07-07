@@ -8,7 +8,7 @@ function showIngredients (){
     article.className = 'ingredients_close';
 
     const headerIngr = document.createElement('header');
-    headerIngr.className = 'headUstensils';
+    headerIngr.className = 'headIngredients';
     
     const title = document.createElement('h2');
     title.textContent = 'Ingredients';
@@ -60,7 +60,7 @@ function showIngredients (){
             headerIngr.style.display='flex';
             arrow.style.display='flex';
             arrowUp.style.display='none';
-            template.style.width= "170px"
+            template.style.width= "170px";
         }});
 
     //APPEND SECTION
@@ -141,7 +141,7 @@ function showAppliance (){
             headerAppliance.style.display='flex';
             arrow.style.display='flex';
             arrowUp.style.display='none';
-            template.style.width= "170px"
+            template.style.width= "170px";
         }});
 
     //APPEND SECTION
@@ -222,7 +222,7 @@ function showUstensils (){
             headerUstensils.style.display='flex';
             arrow.style.display='flex';
             arrowUp.style.display='none';
-            template.style.width= "170px"
+            template.style.width= "170px";
         }});
 
     //APPEND SECTION
@@ -256,7 +256,7 @@ const fillFiltersAll = (recipes) => {
 
 
     for(let i=0; i<recipes.length; i++) {
-        //ingrédients
+        /******INGREDIENTS****/
         for(let j=0; j<recipes[i].ingredients.length; j++) {
             if(ingredientsList.includes(recipes[i].ingredients[j].ingredient) === false) {
                 ingredientsList.push(recipes[i].ingredients[j].ingredient);
@@ -267,7 +267,7 @@ const fillFiltersAll = (recipes) => {
                 ingredientBlocAppend.appendChild(filterItem);
             }
         }
-        //appareils
+        /******APPLIANCE****/
             if (applianceList.includes(recipes[i].appliance) === false) {
                 applianceList.push(recipes[i].appliance);
                 let filterItem = document.createElement('span');
@@ -275,7 +275,7 @@ const fillFiltersAll = (recipes) => {
                 filterItem.innerText = recipes[i].appliance;
                 applianceBlocAppend.appendChild(filterItem);
             }
-        //ustensiles
+        /******USTENSILS****/
         for(let j=0; j<recipes[i].ustensils.length; j++) {
             if (ustencilsList.includes(recipes[i].ustensils[j]) === false) {
                 ustencilsList.push(recipes[i].ustensils[j]);
@@ -288,6 +288,65 @@ const fillFiltersAll = (recipes) => {
     }
 }
 
+/**** IS ONE FILTER ALREADY OPEN ? *****/
+/** To avoid all filters to open when one of them is trully needed, this will only open one*/
+async function isArrowClicked (){
+    const arrowIngredientsDown = document.querySelector('.ingredients_close .headIngredients .angle-down');
+    const arrowApplianceDown = document.querySelector('.appareils_close .headAppliance .angle-down');
+    const arrowUstensilsDown = document.querySelector('.ustencils_close .headUstensils .angle-down');
+
+    let ingredientsCloseElement;
+    let arrowIngredientsUp;
+    
+    let ustensilsCloseElement;
+    let arrowUstencilsUp;
+
+    let applianceCloseElement;
+    let arrowApplianceUp;
+
+    console.log(arrowIngredientsDown);
+
+    arrowApplianceDown.addEventListener('click', function (e){
+        ingredientsCloseElement = document.querySelector('.ingredients');
+        arrowIngredientsUp = document.querySelector('.ingredients .angle-up .fa-angle-up');
+        ustensilsCloseElement = document.querySelector('.ustencils');
+        arrowUstencilsUp = document.querySelector('.ustencils .angle-up .fa-angle-up');
+        if(ingredientsCloseElement != null){
+            arrowIngredientsUp.click();
+        }
+        if(ustensilsCloseElement != null){
+            arrowUstencilsUp.click();
+        }
+    });
+
+    arrowIngredientsDown.addEventListener('click', function (e){
+        ustensilsCloseElement = document.querySelector('.ustencils');
+        arrowUstencilsUp = document.querySelector('.ustencils .angle-up .fa-angle-up');
+        applianceCloseElement = document.querySelector('.appareils');
+        arrowApplianceUp = document.querySelector('.appareils .angle-up .fa-angle-up');
+        if(ustensilsCloseElement != null){
+            arrowUstencilsUp.click();
+        }
+        if(applianceCloseElement != null){
+            arrowApplianceUp.click();
+        } 
+    });
+   
+    arrowUstensilsDown.addEventListener('click', function (e){
+        ingredientsCloseElement = document.querySelector('.ingredients');
+        arrowIngredientsUp = document.querySelector('.ingredients .angle-up .fa-angle-up');
+        applianceCloseElement = document.querySelector('.appareils');
+        arrowApplianceUp = document.querySelector('.appareils .angle-up .fa-angle-up');
+        if(ingredientsCloseElement != null){
+            arrowIngredientsUp.click();
+        }
+        if(applianceCloseElement != null){
+            arrowApplianceUp.click();
+        }
+    });
+}
+
+
 async function getDataRecipes() {
     const response = await fetch ("data/recipes.json");
     return await response.json();
@@ -297,6 +356,7 @@ async function init(){
     showIngredients();
     showAppliance();
     showUstensils();
+    isArrowClicked ()
     const { recipes } = await getDataRecipes();
     fillFiltersAll(recipes);
 }
