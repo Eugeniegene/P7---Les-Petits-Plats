@@ -181,7 +181,8 @@ body
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     position : absolute;
-    height: 275px;
+    max-height: 275px;
+    height:auto;
     overflow: hidden;
     margin-top: 60px;
     border-bottom-left-radius: 5px;
@@ -307,7 +308,8 @@ body
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     position : absolute;
-    height: 175px;
+    max-height: 175px;
+    height:auto;
     overflow: hidden;
     margin-top: 60px;
     border-bottom-left-radius: 5px;
@@ -432,7 +434,8 @@ body
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
     position : absolute;
-    height: 275px;
+    max-height: 275px;
+    height:auto;
     overflow: hidden;
     margin-top: 60px;
     border-bottom-left-radius: 5px;
