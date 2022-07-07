@@ -254,6 +254,7 @@ const fillFiltersAll = (recipes) => {
     applianceBlocAppend.innerHTML ="";
     ustencilsBlocAppend.innerHTML ="";
 
+
     for(let i=0; i<recipes.length; i++) {
         //ingrédients
         for(let j=0; j<recipes[i].ingredients.length; j++) {
