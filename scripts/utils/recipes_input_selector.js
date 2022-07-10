@@ -10,9 +10,9 @@ let searchbarMainInput = document.querySelector("#search-input #dataInput");
 let mainInputSearchResultRecipes = [];
 let matches = [];
 let noResultText = document.querySelector(".no-result-message");
+recipesToDisplay = [];
 
-
-function searchRecipesDisplay(){
+function searchRecipesDisplay(recipesToDisplay){
     const article = document.getElementsByName('article');
     let cards = document.querySelectorAll('article');
     let search_query = document.getElementById("dataInput").value.trim();
@@ -29,13 +29,12 @@ function searchRecipesDisplay(){
 /********SEARCH FUNCTION******** */
 async function liveSearch() {
   const {recipes} = await getDataRecipes();
-  recipesToDisplay = [];
   let tagsAreUsed = false;
   let mainInput;
   
   if( (searchbarMainInput.value.length > 2) ) {
       mainInput = searchbarMainInput.value;
-    const regex = new RegExp(`${mainInput.trim()}`, 'i');
+      const regex = new RegExp(`${mainInput.trim()}`, 'i');
       for(let i=0; i<recipes.length; i++) {
           let recipeIsMatching = false;
           /*****SEARCHING A NAME INSIDE THE RECIPE******/
@@ -54,40 +53,39 @@ async function liveSearch() {
             }
           if(recipeIsMatching === true) {
               recipesToDisplay.push(recipes[i]);
-              console.log('regex test recipes true push');
             }
         }
-        console.log(recipesToDisplay);
       /*****THE RECIPES WILL BE ACTUALISED******/
       fillFiltersAll(recipesToDisplay);
   }
 
-  if(Array.from(document.querySelectorAll("#tags_selected .ingredients_tags_wrapper .ingredient-tag")).length > 0){
+  if (Array.from(document.querySelectorAll(" .ingredients_tags_wrapper .ingredient-tag .filter-item-ingredient")).length > 0 ||
+  Array.from(document.querySelectorAll(".appliance_tags_wrapper .appliance-tag .filter-item-appliance")).length > 0 ||
+  Array.from(document.querySelectorAll(".ustensil_tags_wrapper .ustencils-tag .filter-item-ustencils")).length > 0 ){
       tagsAreUsed = true;
-      console.log(recipesToDisplay);
-      console.log(recipes);
       if(recipesToDisplay.length > 0) {
           recipesToDisplay = filteredRecipesWithTags(recipesToDisplay);
       }
       else {
-          recipesToDisplay = filteredRecipesWithTags(recipes); 
+        console.log(recipes);
+          recipesToDisplay = filteredRecipesWithTags(recipes);
       }
   }
 
-/*****ERROR MESSAGE IF NOTHING COMES OUT******/
-/****The message will be displayed in case of an impossible search****/
+    /*****ERROR MESSAGE IF NOTHING COMES OUT******/
+    /****The message will be displayed in case of an impossible search****/
   if(recipesToDisplay.length > 0) {
       noResultText.innerHTML = "";
-      searchRecipesDisplay();
+      searchRecipesDisplay(recipesToDisplay);
   } else {
-      searchRecipesDisplay();
+      searchRecipesDisplay(recipesToDisplay);
       noResultText.innerHTML = "<p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>";
   }
-/*****IF SEARCHBAR IS EMPTY******/
-/****This indicades the minimum condition to allow a research****/
-  if ( ( (searchbarMainInput.value === '') || (searchbarMainInput.value.length < 3 ) ) && searchbarMainInput === false ) {
-    fillFiltersAll(recipes);
-      searchRecipesDisplay();
+    /*****IF SEARCHBAR IS EMPTY******/
+  /****This indicades the minimum condition to allow a research****/
+  if ( ( (searchbarMainInput.value === '') || (searchbarMainInput.value.length < 3 ) ) && tagsAreUsed === false ) {
+      fillFiltersAll(recipes);
+      searchRecipesDisplay(recipesToDisplay);
       noResultText.innerHTML = "";
   }
 };
