@@ -286,6 +286,12 @@ const fillFiltersAll = (recipes) => {
             }
         }
     }
+    tagIngredientAlreadyAdded=false;
+    addTagFilterIngredients();
+    tagApplianceAlreadyAdded=false;
+    addTagFilterAppliance();
+    tagUstencilAlreadyAdded= false;
+    addTagFilterUstencils();
 }
 
 /**** IS ONE FILTER ALREADY OPEN ? *****/
@@ -303,8 +309,6 @@ async function isArrowClicked (){
 
     let applianceCloseElement;
     let arrowApplianceUp;
-
-    console.log(arrowIngredientsDown);
 
     arrowApplianceDown.addEventListener('click', function (e){
         ingredientsCloseElement = document.querySelector('.ingredients');
