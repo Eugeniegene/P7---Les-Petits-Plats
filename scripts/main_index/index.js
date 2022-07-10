@@ -8,8 +8,7 @@ async function displayData(recipes) {
     const recipeSection = document.querySelector("#recipes_cards");
 
     recipes.forEach((recipe) => {
-        const recipeModel = recipesFactory(recipe);
-        const recipeCard = recipeModel.getRecipeCard();
+        const recipeCard = getRecipeCard(recipe);
         recipeSection.appendChild(recipeCard);
     });
 };
