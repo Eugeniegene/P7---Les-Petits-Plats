@@ -8,9 +8,9 @@ const matchList = document.getElementById('update');
 
 let searchbarMainInput = document.querySelector("#search-input #dataInput");
 let mainInputSearchResultRecipes = [];
-let matches = [];
 let noResultText = document.querySelector(".no-result-message");
 recipesToDisplay = [];
+
 
 function searchRecipesDisplay(recipesToDisplay){
     const article = document.getElementsByName('article');
@@ -24,12 +24,13 @@ function searchRecipesDisplay(recipesToDisplay){
           cards[i].classList.add("is-hidden");
         }
       }
-      return(article);
+    return(article);
 }
 /********SEARCH FUNCTION******** */
 async function liveSearch() {
   const {recipes} = await getDataRecipes();
   let tagsAreUsed = false;
+  recipesToDisplay = [];
   let mainInput;
   
   if( (searchbarMainInput.value.length > 2) ) {
@@ -76,23 +77,24 @@ async function liveSearch() {
     /****The message will be displayed in case of an impossible search****/
   if(recipesToDisplay.length > 0) {
       noResultText.innerHTML = "";
-      searchRecipesDisplay(recipesToDisplay);
+      displayData(recipesToDisplay);
   } else {
-      searchRecipesDisplay(recipesToDisplay);
+    displayData(recipesToDisplay);
       noResultText.innerHTML = "<p>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>";
   }
     /*****IF SEARCHBAR IS EMPTY******/
   /****This indicades the minimum condition to allow a research****/
   if ( ( (searchbarMainInput.value === '') || (searchbarMainInput.value.length < 3 ) ) && tagsAreUsed === false ) {
       fillFiltersAll(recipes);
-      searchRecipesDisplay(recipesToDisplay);
+      displayData(recipes);
       noResultText.innerHTML = "";
   }
 };
 
+let recipes;
 let typingTimer;               
 let typeInterval = 100;  
 searchbarMainInput.addEventListener('keyup', () => { //press enter to search as well
     clearTimeout(typingTimer);
-    typingTimer = setTimeout(liveSearch, searchRecipesDisplay, typeInterval);
+    typingTimer = setTimeout(liveSearch, displayData, typeInterval);
 });
