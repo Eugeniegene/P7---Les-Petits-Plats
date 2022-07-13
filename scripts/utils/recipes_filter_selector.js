@@ -378,7 +378,6 @@ async function getDataRecipes() {
   const response = await fetch('data/recipes.json');
   return await response.json();
 }
-
 async function init() {
   showIngredients();
   showAppliance();
