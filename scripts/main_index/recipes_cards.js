@@ -1,12 +1,12 @@
+/* eslint-disable no-restricted-syntax */
 function getIngredients(ingredients) {
   const column = document.createElement('div');
   column.classList.add('ingredients_detailed_bloc');
 
   let ingredientName;
 
-  ingredients.forEach((ingredient) => {
+  for (const ingredient of ingredients) {
     ingredientName = document.createElement('p');
-
     if (ingredient.unit === '' || ingredient.unit == null) {
       if (ingredient.quantity) {
         ingredientName.innerHTML = `<strong>${ingredient.ingredient} :</strong> ${ingredient.quantity}`;
@@ -17,7 +17,7 @@ function getIngredients(ingredients) {
       ingredientName.innerHTML = `<strong>${ingredient.ingredient} :</strong> ${ingredient.quantity} ${ingredient.unit}`;
     }
     column.appendChild(ingredientName);
-  });
+  }
   return column;
 }
 /** getRecipeCard is used in the index file */
