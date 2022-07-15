@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 async function getDataJson() {
   const response = await fetch('data/recipes.json');
   const recipes = await response.json();
@@ -7,14 +8,13 @@ async function getDataJson() {
 async function displayData(recipes) {
   const recipeSection = document.querySelector('#recipes_cards');
   recipeSection.innerHTML = '';
-  recipes.forEach((recipe) => {
+  for (const recipe of recipes) {
     /** getRecipeCard is defined in recipes_cards */
     // eslint-disable-next-line no-undef
     const recipeCard = getRecipeCard(recipe);
     recipeSection.appendChild(recipeCard);
-  });
+  }
 }
-
 async function init() {
   const { recipes } = await getDataJson();
   displayData(recipes);
