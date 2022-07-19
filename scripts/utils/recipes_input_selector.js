@@ -20,14 +20,13 @@ function searchRecipesDisplay() {
   const article = document.getElementsByName('article');
   const cards = document.querySelectorAll('article');
   const searchQuery = document.getElementById('dataInput').value.trim();
-  for (let i = 0; i < cards.length; i += 1) {
-    if (cards[i].innerText.toLowerCase()
-      .includes(searchQuery.toLowerCase())) {
-      cards[i].classList.remove('is-hidden');
+  cards.forEach((card) => {
+    if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
+      card.classList.remove('is-hidden');
     } else {
-      cards[i].classList.add('is-hidden');
+      card.classList.add('is-hidden');
     }
-  }
+  });
   return (article);
 }
 searchRecipesDisplay();
@@ -41,22 +40,20 @@ async function liveSearch() {
   if ((searchbarMainInput.value.length > 2)) {
     mainInput = searchbarMainInput.value;
     const regex = new RegExp(`${mainInput.trim()}`, 'i');
-    for (let i = 0; i < recipes.length; i += 1) {
+    recipesToDisplay = recipes.filter((recipe) => {
       let recipeIsMatching = false;
-      if (regex.test(recipes[i].name)) {
+      if (regex.test(recipes.name)) {
         recipeIsMatching = true;
-      } else if (regex.test(recipes[i].description)) {
+      } else if (regex.test(recipe.description)) {
         recipeIsMatching = true;
       }
-      for (let j = 0; j < recipes[i].ingredients.length; j += 1) {
-        if (regex.test(recipes[i].ingredients[j].ingredient)) {
+      recipe.ingredients.forEach(({ ingredient }) => {
+        if (regex.test(ingredient)) {
           recipeIsMatching = true;
         }
-      }
-      if (recipeIsMatching === true) {
-        recipesToDisplay.push(recipes[i]);
-      }
-    }
+      });
+      return recipeIsMatching;
+    });
     /* ****THE RECIPES WILL BE ACTUALISED***** */
     fillFiltersAll(recipesToDisplay);
   }
