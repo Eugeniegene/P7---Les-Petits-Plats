@@ -111,21 +111,16 @@ function filteredRecipesWithTags(recipesToFilter) {
   const taggedIngredientsDOM = Array.from(document.querySelectorAll('.ingredients_tags_wrapper .ingredient-tag .filter-item-ingredient'));
   const taggedAppliancesDOM = Array.from(document.querySelectorAll('.appliance_tags_wrapper .appliance-tag .filter-item-appliance'));
   const taggedustensilsDOM = Array.from(document.querySelectorAll('.ustensil_tags_wrapper .ustencils-tag .filter-item-ustencils'));
-  const recipesToDisplay = [];
-  const taggedIngredients = [];
-  const taggedAppliances = [];
-  const taggedustensils = [];
+  let recipesToDisplay = [];
+  let taggedIngredients = [];
+  let taggedAppliances = [];
+  let taggedustensils = [];
 
-  for (let i = 0; i < taggedIngredientsDOM.length; i += 1) {
-    taggedIngredients.push(taggedIngredientsDOM[i].innerText);
-  }
-  for (let i = 0; i < taggedAppliancesDOM.length; i += 1) {
-    taggedAppliances.push(taggedAppliancesDOM[i].innerText);
-  }
-  for (let i = 0; i < taggedustensilsDOM.length; i += 1) {
-    taggedustensils.push(taggedustensilsDOM[i].innerText);
-  }
-  for (let i = 0; i < recipesToFilter.length; i += 1) {
+  taggedIngredients = taggedIngredientsDOM.map((taggedIngredient) => taggedIngredient.innerText);
+  taggedAppliances = taggedAppliancesDOM.map((taggedAppliance) => taggedAppliance.innerText);
+  taggedustensils = taggedustensilsDOM.map((taggedUtensil) => taggedUtensil.innerText);
+
+  recipesToDisplay = recipesToFilter.filter((recipe) => {
     let recipeIsMatching = false;
     let ingredientIsMatching = false;
     let applianceIsMatching = false;
@@ -133,40 +128,36 @@ function filteredRecipesWithTags(recipesToFilter) {
     let ingredientsMatching = 0;
     let appliancesMatching = 0;
     let ustensilsMatching = 0;
-    const ingredientsInTheRecipe = [];
+    let ingredientsInTheRecipe = [];
     const appliancesInTheRecipe = [];
-    const ustensilsInTheRecipe = [];
+    let ustensilsInTheRecipe = [];
 
-    for (let j = 0; j < recipesToFilter[i].ingredients.length; j += 1) {
-      ingredientsInTheRecipe.push(recipesToFilter[i].ingredients[j].ingredient);
-    }
+    ingredientsInTheRecipe = recipe.ingredients.map(({ ingredient }) => ingredient);
 
-    appliancesInTheRecipe.push(recipesToFilter[i].appliance);
+    appliancesInTheRecipe.push(recipe.appliance);
 
-    for (let j = 0; j < recipesToFilter[i].ustensils.length; j += 1) {
-      ustensilsInTheRecipe.push(recipesToFilter[i].ustensils[j]);
-    }
+    ustensilsInTheRecipe = recipe.ustensils.map((ustensil) => ustensil);
 
     if (taggedIngredients.length > 0) {
-      for (let j = 0; j < taggedIngredients.length; j += 1) {
-        if (ingredientsInTheRecipe.includes(taggedIngredients[j])) {
+      taggedIngredients.forEach((taggedIngredient) => {
+        if (ingredientsInTheRecipe.includes(taggedIngredient)) {
           ingredientsMatching += 1;
         }
-      }
+      });
     }
     if (taggedAppliances.length > 0) {
-      for (let j = 0; j < taggedAppliances.length; j += 1) {
-        if (appliancesInTheRecipe.includes(taggedAppliances[j])) {
+      taggedAppliances.forEach((taggedAppliance) => {
+        if (appliancesInTheRecipe.includes(taggedAppliance)) {
           appliancesMatching += 1;
         }
-      }
+      });
     }
     if (taggedustensils.length > 0) {
-      for (let j = 0; j < taggedustensils.length; j += 1) {
-        if (ustensilsInTheRecipe.includes(taggedustensils[j])) {
+      taggedustensils.forEach((taggedustensil) => {
+        if (ustensilsInTheRecipe.includes(taggedustensil)) {
           ustensilsMatching += 1;
         }
-      }
+      });
     }
     if (ingredientsMatching === taggedIngredients.length) {
       ingredientIsMatching = true;
@@ -184,10 +175,8 @@ function filteredRecipesWithTags(recipesToFilter) {
     && (utensilIsMatching === true)) {
       recipeIsMatching = true;
     }
-    if (recipeIsMatching === true) {
-      recipesToDisplay.push(recipesToFilter[i]);
-    }
-  }
+    return recipeIsMatching;
+  });
   /** fillFiltersAll is defined in recipes_filter_selector (l.244) */
   // eslint-disable-next-line no-undef
   fillFiltersAll(recipesToDisplay);
