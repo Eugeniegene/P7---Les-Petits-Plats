@@ -19,7 +19,7 @@ const utensilTagsWrapper = document.querySelector('.ustensil_tags_wrapper');
 function addTagFilterIngredients() {
   if (tagIngredientAlreadyAdded === false) {
     tagIngredientAlreadyAdded = true;
-    for (const element of filterItemIngredients) {
+    Array.from(filterItemIngredients).forEach((element) => {
       element.addEventListener('click', (e) => {
         liveSearch();
         const tagIngredient = document.createElement('div');
@@ -41,7 +41,7 @@ function addTagFilterIngredients() {
         tagIngredient.appendChild(deleteTagIcon);
         deleteTagIcon.appendChild(deleteIconImg);
       });
-    }
+    });
   }
 }
 /** addTagFilterAppliance is used in recipes_filter_selector */
@@ -49,7 +49,7 @@ function addTagFilterIngredients() {
 function addTagFilterAppliance() {
   if (tagApplianceAlreadyAdded === false) {
     tagApplianceAlreadyAdded = true;
-    for (const element of filterItemAppliance) {
+    Array.from(filterItemAppliance).forEach((element) => {
       element.addEventListener('click', (e) => {
         liveSearch();
         const tagAppliance = document.createElement('div');
@@ -71,7 +71,7 @@ function addTagFilterAppliance() {
         tagAppliance.appendChild(deleteTagIcon);
         deleteTagIcon.appendChild(deleteIconImg);
       });
-    }
+    });
   }
 }
 /** addTagFilterUstencils is used in recipes_filter_selector */
@@ -79,7 +79,7 @@ function addTagFilterAppliance() {
 function addTagFilterUstencils() {
   if (tagUstencilAlreadyAdded === false) {
     tagUstencilAlreadyAdded = true;
-    for (const element of filterItemUstencils) {
+    Array.from(filterItemUstencils).forEach((element) => {
       element.addEventListener('click', (e) => {
         liveSearch();
         const tagUstencils = document.createElement('div');
@@ -101,7 +101,7 @@ function addTagFilterUstencils() {
         tagUstencils.appendChild(deleteTagIcon);
         deleteTagIcon.appendChild(deleteIconImg);
       });
-    }
+    });
   }
 }
 /** *******TAGS FILTERING RECIPES******* */
