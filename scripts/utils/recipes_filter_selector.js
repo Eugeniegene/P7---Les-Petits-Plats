@@ -1,5 +1,6 @@
 /* all variables and functions from line 312 to 317 were defined in tags_generator */
 /* eslint-disable no-undef */
+
 /* eslint-disable no-plusplus */
 /* eslint-disable no-return-await */
 function showIngredients() {
@@ -279,36 +280,36 @@ const fillFiltersAll = (recipes) => {
   applianceBlocAppend.innerHTML = '';
   ustencilsBlocAppend.innerHTML = '';
 
-  for (let i = 0; i < recipes.length; i++) {
+  recipes.forEach((recipe) => {
     /** ****INGREDIENTS*** */
-    for (let j = 0; j < recipes[i].ingredients.length; j++) {
-      if (ingredientsList.includes(recipes[i].ingredients[j].ingredient) === false) {
-        ingredientsList.push(recipes[i].ingredients[j].ingredient);
+    recipe.ingredients.forEach(({ ingredient }) => {
+      if (ingredientsList.includes(ingredient) === false) {
+        ingredientsList.push(ingredient);
         const filterItem = document.createElement('span');
         filterItem.classList.add('filter-item-ingredient');
-        filterItem.innerText = recipes[i].ingredients[j].ingredient;
+        filterItem.innerText = ingredient;
         ingredientBlocAppend.appendChild(filterItem);
       }
-    }
+    });
     /** ****APPLIANCE*** */
-    if (applianceList.includes(recipes[i].appliance) === false) {
-      applianceList.push(recipes[i].appliance);
+    if (applianceList.includes(recipe.appliance) === false) {
+      applianceList.push(recipe.appliance);
       const filterItem = document.createElement('span');
       filterItem.classList.add('filter-item-appliance');
-      filterItem.innerText = recipes[i].appliance;
+      filterItem.innerText = recipe.appliance;
       applianceBlocAppend.appendChild(filterItem);
     }
     /* *****USTENSILS*** */
-    for (let j = 0; j < recipes[i].ustensils.length; j++) {
-      if (ustencilsList.includes(recipes[i].ustensils[j]) === false) {
-        ustencilsList.push(recipes[i].ustensils[j]);
+    recipe.ustensils.forEach((ustensil) => {
+      if (ustencilsList.includes(ustensil) === false) {
+        ustencilsList.push(ustensil);
         const filterItem = document.createElement('span');
         filterItem.classList.add('filter-item-ustencils');
-        filterItem.innerText = recipes[i].ustensils[j];
+        filterItem.innerText = ustensil;
         ustencilsBlocAppend.appendChild(filterItem);
       }
-    }
-  }
+    });
+  });
   tagIngredientAlreadyAdded = false;
   addTagFilterIngredients();
   tagApplianceAlreadyAdded = false;
@@ -377,7 +378,6 @@ async function getDataRecipes() {
   const response = await fetch('data/recipes.json');
   return await response.json();
 }
-
 async function init() {
   showIngredients();
   showAppliance();
