@@ -11,13 +11,13 @@ async function getDetailedFilterIngredients() {
   const filterRender = document.querySelectorAll('.list_ingredients span');
   const cards = document.querySelectorAll('span.filter-item-ingredient');
   const searchQuery = document.getElementById('ingredient-input').value;
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i].innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
-      cards[i].classList.remove('is-hidden');
+  cards.forEach((card) => {
+    if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
+      card.classList.remove('is-hidden');
     } else {
-      cards[i].classList.add('is-hidden');
+      card.classList.add('is-hidden');
     }
-  }
+  });
   return (filterRender);
 }
 /** getInputIngredient is defined in tags_generator */
@@ -41,14 +41,13 @@ async function getDetailedFilterAppliance() {
   const filterRender = document.querySelectorAll('.list_appliance span');
   const cards = document.querySelectorAll('span.filter-item-appliance');
   const searchQuery = document.getElementById('appliance-input').value;
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i].innerText.toLowerCase()
-      .includes(searchQuery.toLowerCase())) {
-      cards[i].classList.remove('is-hidden');
+  cards.forEach((card) => {
+    if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
+      card.classList.remove('is-hidden');
     } else {
-      cards[i].classList.add('is-hidden');
+      card.classList.add('is-hidden');
     }
-  }
+  });
   return (filterRender);
 }
 /** getInputAppliance is defined in tags_generator */
@@ -71,14 +70,13 @@ async function getDetailedFilterUstencil() {
   const filterRender = document.querySelectorAll('.list_ustencils span');
   const cards = document.querySelectorAll('span.filter-item-ustencils');
   const searchQuery = document.getElementById('ustencils-input').value;
-  for (let i = 0; i < cards.length; i++) {
-    if (cards[i].innerText.toLowerCase()
-      .includes(searchQuery.toLowerCase())) {
-      cards[i].classList.remove('is-hidden');
+  cards.forEach((card) => {
+    if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
+      card.classList.remove('is-hidden');
     } else {
-      cards[i].classList.add('is-hidden');
+      card.classList.add('is-hidden');
     }
-  }
+  });
   return (filterRender);
 }
 /** getInputUstencil is defined in tags_generator */
