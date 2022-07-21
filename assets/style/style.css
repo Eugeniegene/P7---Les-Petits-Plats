@@ -465,7 +465,8 @@ body
     grid-template-rows: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-}
+    width: 20%;
+    margin-left: 0;
 
 article
 {
