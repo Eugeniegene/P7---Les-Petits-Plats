@@ -183,18 +183,18 @@ function showUstensils() {
   /** getDataJson is defined in the index file */
   // eslint-disable-next-line no-undef
   getDataJson();
-  const ustencilsBox = document.getElementsByClassName('ustenciles_tag');
+  const ustensilsBox = document.getElementsByClassName('ustensiles_tag');
   const template = document.createElement('div');
   template.className = 'template';
 
   const article = document.createElement('div');
-  article.className = 'ustencils_close';
+  article.className = 'ustensils_close';
 
   const headerUstensils = document.createElement('header');
   headerUstensils.className = 'headUstensils';
 
   const title = document.createElement('h2');
-  title.textContent = 'Ustenciles';
+  title.textContent = 'Ustensiles';
   title.className = 'nom';
 
   const spanAngle = document.createElement('span');
@@ -211,40 +211,40 @@ function showUstensils() {
   arrowUp.className = 'fa-solid fa-angle-up fa-lg';
   arrowUp.style.display = 'none';
 
-  const inputUstencils = document.createElement('input');
-  inputUstencils.setAttribute('id', 'ustencils-input');
-  inputUstencils.className = 'input_ustencils';
-  inputUstencils.setAttribute('placeholder', 'Selectionner un ustencile...');
+  const inputUstensils = document.createElement('input');
+  inputUstensils.setAttribute('id', 'ustensils-input');
+  inputUstensils.className = 'input_ustensils';
+  inputUstensils.setAttribute('placeholder', 'Selectionner un ustensile...');
 
-  const ustencilsListedBloc = document.createElement('div');
-  ustencilsListedBloc.className = 'list_ustencils';
-  ustencilsListedBloc.style.display = 'none';
+  const ustensilsListedBloc = document.createElement('div');
+  ustensilsListedBloc.className = 'list_ustensils';
+  ustensilsListedBloc.style.display = 'none';
 
   arrow.addEventListener('click', (e) => {
     if (e.target.className === 'fa-solid fa-angle-down fa-lg') {
-      article.classList.remove('ustencils_close');
-      article.classList.add('ustencils');
+      article.classList.remove('ustensils_close');
+      article.classList.add('ustensils');
       headerUstensils.style.display = 'none';
-      inputUstencils.style.display = 'flex';
+      inputUstensils.style.display = 'flex';
       arrow.style.display = 'none';
       arrowUp.style.display = 'flex';
       template.style.width = '828px';
-      ustencilsListedBloc.style.display = 'flex';
-      /** getInputUstencil is defined in recipes_inside_filter_input */
+      ustensilsListedBloc.style.display = 'flex';
+      /** getInputUstensil is defined in recipes_inside_filter_input */
       // eslint-disable-next-line no-undef
-      getInputUstencil();
-      /** addTagFilterUstencils is defined in tags_generator */
+      getInputUstensil();
+      /** addTagFilterUstensils is defined in tags_generator */
       // eslint-disable-next-line no-undef
-      addTagFilterUstencils();
+      addTagFilterUstensils();
     }
   });
 
   arrowUp.addEventListener('click', (e) => {
     if (e.target.className === 'fa-solid fa-angle-up fa-lg') {
-      article.classList.remove('ustencils');
-      article.classList.add('ustencils_close');
-      inputUstencils.style.display = 'none';
-      ustencilsListedBloc.style.display = 'none';
+      article.classList.remove('ustensils');
+      article.classList.add('ustensils_close');
+      inputUstensils.style.display = 'none';
+      ustensilsListedBloc.style.display = 'none';
       headerUstensils.style.display = 'flex';
       arrow.style.display = 'flex';
       arrowUp.style.display = 'none';
@@ -253,7 +253,7 @@ function showUstensils() {
   });
 
   // APPEND SECTION
-  ustencilsBox[0].appendChild(template);
+  ustensilsBox[0].appendChild(template);
   template.appendChild(article);
   article.appendChild(headerUstensils);
   headerUstensils.appendChild(title);
@@ -261,8 +261,8 @@ function showUstensils() {
   spanAngle.appendChild(arrow);
   article.appendChild(hiddenAngle);
   hiddenAngle.appendChild(arrowUp);
-  article.appendChild(inputUstencils);
-  article.appendChild(ustencilsListedBloc);
+  article.appendChild(inputUstensils);
+  article.appendChild(ustensilsListedBloc);
 
   return (article);
 }
@@ -270,15 +270,15 @@ function showUstensils() {
 const fillFiltersAll = (recipes) => {
   const ingredientBlocAppend = document.querySelector('.list_ingredients');
   const applianceBlocAppend = document.querySelector('.list_appareils');
-  const ustencilsBlocAppend = document.querySelector('.list_ustencils');
+  const ustensilsBlocAppend = document.querySelector('.list_ustensils');
 
   const ingredientsList = [];
-  const ustencilsList = [];
+  const ustensilsList = [];
   const applianceList = [];
 
   ingredientBlocAppend.innerHTML = '';
   applianceBlocAppend.innerHTML = '';
-  ustencilsBlocAppend.innerHTML = '';
+  ustensilsBlocAppend.innerHTML = '';
 
   recipes.forEach((recipe) => {
     /** ****INGREDIENTS*** */
@@ -301,12 +301,12 @@ const fillFiltersAll = (recipes) => {
     }
     /* *****USTENSILS*** */
     recipe.ustensils.forEach((ustensil) => {
-      if (ustencilsList.includes(ustensil) === false) {
-        ustencilsList.push(ustensil);
+      if (ustensilsList.includes(ustensil) === false) {
+        ustensilsList.push(ustensil);
         const filterItem = document.createElement('span');
-        filterItem.classList.add('filter-item-ustencils');
+        filterItem.classList.add('filter-item-ustensils');
         filterItem.innerText = ustensil;
-        ustencilsBlocAppend.appendChild(filterItem);
+        ustensilsBlocAppend.appendChild(filterItem);
       }
     });
   });
@@ -314,8 +314,8 @@ const fillFiltersAll = (recipes) => {
   addTagFilterIngredients();
   tagApplianceAlreadyAdded = false;
   addTagFilterAppliance();
-  tagUstencilAlreadyAdded = false;
-  addTagFilterUstencils();
+  tagUstensilAlreadyAdded = false;
+  addTagFilterUstensils();
 };
 
 /* *** IS ONE FILTER ALREADY OPEN ? **** */
@@ -323,13 +323,13 @@ const fillFiltersAll = (recipes) => {
 async function isArrowClicked() {
   const arrowIngredientsDown = document.querySelector('.ingredients_close .headIngredients .angle-down');
   const arrowApplianceDown = document.querySelector('.appareils_close .headAppliance .angle-down');
-  const arrowUstensilsDown = document.querySelector('.ustencils_close .headUstensils .angle-down');
+  const arrowUstensilsDown = document.querySelector('.ustensils_close .headUstensils .angle-down');
 
   let ingredientsCloseElement;
   let arrowIngredientsUp;
 
   let ustensilsCloseElement;
-  let arrowUstencilsUp;
+  let arrowUstensilsUp;
 
   let applianceCloseElement;
   let arrowApplianceUp;
@@ -337,23 +337,23 @@ async function isArrowClicked() {
   arrowApplianceDown.addEventListener('click', () => {
     ingredientsCloseElement = document.querySelector('.ingredients');
     arrowIngredientsUp = document.querySelector('.ingredients .angle-up .fa-angle-up');
-    ustensilsCloseElement = document.querySelector('.ustencils');
-    arrowUstencilsUp = document.querySelector('.ustencils .angle-up .fa-angle-up');
+    ustensilsCloseElement = document.querySelector('.ustensils');
+    arrowUstensilsUp = document.querySelector('.ustensils .angle-up .fa-angle-up');
     if (ingredientsCloseElement != null) {
       arrowIngredientsUp.click();
     }
     if (ustensilsCloseElement != null) {
-      arrowUstencilsUp.click();
+      arrowUstensilsUp.click();
     }
   });
 
   arrowIngredientsDown.addEventListener('click', () => {
-    ustensilsCloseElement = document.querySelector('.ustencils');
-    arrowUstencilsUp = document.querySelector('.ustencils .angle-up .fa-angle-up');
+    ustensilsCloseElement = document.querySelector('.ustensils');
+    arrowUstensilsUp = document.querySelector('.ustensils .angle-up .fa-angle-up');
     applianceCloseElement = document.querySelector('.appareils');
     arrowApplianceUp = document.querySelector('.appareils .angle-up .fa-angle-up');
     if (ustensilsCloseElement != null) {
-      arrowUstencilsUp.click();
+      arrowUstensilsUp.click();
     }
     if (applianceCloseElement != null) {
       arrowApplianceUp.click();
