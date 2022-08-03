@@ -60,7 +60,7 @@ async function liveSearch() {
 
   if (Array.from(document.querySelectorAll(' .ingredients_tags_wrapper .ingredient-tag .filter-item-ingredient')).length > 0
   || Array.from(document.querySelectorAll('.appliance_tags_wrapper .appliance-tag .filter-item-appliance')).length > 0
-  || Array.from(document.querySelectorAll('.ustensil_tags_wrapper .ustencils-tag .filter-item-ustencils')).length > 0) {
+  || Array.from(document.querySelectorAll('.ustensil_tags_wrapper .ustensils-tag .filter-item-ustensils')).length > 0) {
     tagsAreUsed = true;
     if (recipesToDisplay.length > 0) {
       recipesToDisplay = filteredRecipesWithTags(recipesToDisplay);
