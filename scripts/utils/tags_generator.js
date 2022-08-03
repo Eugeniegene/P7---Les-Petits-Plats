@@ -4,10 +4,10 @@
 /* eslint-disable no-restricted-syntax */
 const filterItemIngredients = document.getElementsByClassName('filter-item-ingredient');
 const filterItemAppliance = document.getElementsByClassName('filter-item-appliance');
-const filterItemUstencils = document.getElementsByClassName('filter-item-ustencils');
+const filterItemustensils = document.getElementsByClassName('filter-item-ustensils');
 let tagIngredientAlreadyAdded = false;
 let tagApplianceAlreadyAdded = false;
-let tagUstencilAlreadyAdded = false;
+let tagUstensilAlreadyAdded = false;
 /* ****TAGS WRAPPERS *** */
 const ingredientTagsWrapper = document.querySelector('.ingredients_tags_wrapper');
 const applianceTagsWrapper = document.querySelector('.appliance_tags_wrapper');
@@ -74,18 +74,18 @@ function addTagFilterAppliance() {
     });
   }
 }
-/** addTagFilterUstencils is used in recipes_filter_selector */
+/** addTagFilterUstensils is used in recipes_filter_selector */
 // eslint-disable-next-line no-unused-vars
-function addTagFilterUstencils() {
-  if (tagUstencilAlreadyAdded === false) {
-    tagUstencilAlreadyAdded = true;
-    Array.from(filterItemUstencils).forEach((element) => {
+function addTagFilterUstensils() {
+  if (tagUstensilAlreadyAdded === false) {
+    tagUstensilAlreadyAdded = true;
+    Array.from(filterItemUstensils).forEach((element) => {
       element.addEventListener('click', (e) => {
         liveSearch();
-        const tagUstencils = document.createElement('div');
-        tagUstencils.setAttribute('class', 'ustencils-tag');
-        tagUstencils.classList.add('tagUstencils');
-        tagUstencils.innerHTML = e.target.outerHTML;
+        const tagUstensils = document.createElement('div');
+        tagUstensils.setAttribute('class', 'ustensils-tag');
+        tagUstensils.classList.add('tagUstensils');
+        tagUstensils.innerHTML = e.target.outerHTML;
         const deleteTagIcon = document.createElement('span');
         deleteTagIcon.className = 'deleteIcon';
         const deleteIconImg = document.createElement('i');
@@ -93,12 +93,12 @@ function addTagFilterUstencils() {
         deleteIconImg.style.cursor = 'pointer';
         deleteIconImg.style.width = '20px';
         deleteTagIcon.addEventListener('click', () => {
-          tagUstencils.remove();
+          tagUstensils.remove();
           liveSearch();
           return false;
         });
-        utensilTagsWrapper.appendChild(tagUstencils);
-        tagUstencils.appendChild(deleteTagIcon);
+        utensilTagsWrapper.appendChild(tagUstensils);
+        tagUstensils.appendChild(deleteTagIcon);
         deleteTagIcon.appendChild(deleteIconImg);
       });
     });
@@ -110,7 +110,7 @@ function addTagFilterUstencils() {
 function filteredRecipesWithTags(recipesToFilter) {
   const taggedIngredientsDOM = Array.from(document.querySelectorAll('.ingredients_tags_wrapper .ingredient-tag .filter-item-ingredient'));
   const taggedAppliancesDOM = Array.from(document.querySelectorAll('.appliance_tags_wrapper .appliance-tag .filter-item-appliance'));
-  const taggedustensilsDOM = Array.from(document.querySelectorAll('.ustensil_tags_wrapper .ustencils-tag .filter-item-ustencils'));
+  const taggedustensilsDOM = Array.from(document.querySelectorAll('.ustensil_tags_wrapper .ustensils-tag .filter-item-ustensils'));
   let recipesToDisplay = [];
   let taggedIngredients = [];
   let taggedAppliances = [];
