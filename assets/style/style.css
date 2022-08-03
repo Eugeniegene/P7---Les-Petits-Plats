@@ -328,8 +328,8 @@ body
     text-decoration: underline;
 }
 
-/************USTENCILS***************/
-.ustenciles_tag
+/************USTENSILS***************/
+.ustensiles_tag
 {
     margin-left:0;
     margin-right:30px;
@@ -342,7 +342,7 @@ body
     margin-left: 0;
     width: 170px;
 }
-.template .ustencils
+.template .ustensils
 {
     background-color: #ED6454;;
     font-weight: bold;
@@ -355,7 +355,7 @@ body
     margin-top: 10px;
 }
 
-.ustencils_close
+.ustensils_close
 {
     background-color: #ED6454;
     font-weight: bold;
@@ -368,7 +368,7 @@ body
     margin-top: 10px;
 }
 
-.ustencils_close header
+.ustensils_close header
 {
     display: flex;
     width: 170px;
@@ -377,18 +377,18 @@ body
     align-items: center;
 }
 
-.ustencils_close header h2
+.ustensils_close header h2
 {
     font-weight: normal;
     font-size: 18px;
 }
-.ustencils_close .angle-down
+.ustensils_close .angle-down
 {
     font-weight: normal;
     font-size: 18px;
     width: 50px;
 }
-.ustencils .angle-up
+.ustensils .angle-up
 {
     position: absolute;
     right:260px;
@@ -408,7 +408,7 @@ body
     position: absolute;
 }
 
-.ustencils input
+.ustensils input
 {
     background-color:#ED6454;
     color: white;
@@ -422,7 +422,7 @@ body
     outline: none;
 }
 
-.ustencils .list_ustencils
+.ustensils .list_ustensils
 {
     background-color:#ED6454;
     display: none;
@@ -441,7 +441,7 @@ body
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.ustencils .list_ustencils span
+.ustensils .list_ustensils span
 {
     width: 30%;
     padding: 10px;
@@ -449,7 +449,7 @@ body
     margin-left: 0;
 }
 
-.ustencils .list_ustencils span:hover
+.ustensils .list_ustensils span:hover
 {
     text-decoration: underline;
 }
@@ -636,7 +636,7 @@ article
     margin-left: 10px;
     margin-right: 0;
 }
-#tags_selected .ustensil_tags_wrapper .ustencils-tag 
+#tags_selected .ustensil_tags_wrapper .ustensils-tag 
 {
     background-color:#ED6454;
     height : auto;
