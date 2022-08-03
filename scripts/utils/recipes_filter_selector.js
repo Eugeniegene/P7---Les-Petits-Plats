@@ -194,7 +194,7 @@ function showUstensils() {
   headerUstensils.className = 'headUstensils';
 
   const title = document.createElement('h2');
-  title.textContent = 'ustensiles';
+  title.textContent = 'Ustensiles';
   title.className = 'nom';
 
   const spanAngle = document.createElement('span');
