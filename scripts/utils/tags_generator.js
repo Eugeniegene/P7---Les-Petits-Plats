@@ -98,7 +98,7 @@ function addTagFilterUstensils() {
           return false;
         });
         utensilTagsWrapper.appendChild(tagUstensils);
-        tagUstenscils.appendChild(deleteTagIcon);
+        tagUstensils.appendChild(deleteTagIcon);
         deleteTagIcon.appendChild(deleteIconImg);
       });
     });
