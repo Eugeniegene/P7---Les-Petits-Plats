@@ -64,12 +64,12 @@ async function getInputAppliance() {
   });
 }
 
-/* **************GET A SPECIFIC USTENCIL VIA INPUT******************* */
-async function getDetailedFilterUstencil() {
+/* **************GET A SPECIFIC USTENSIL VIA INPUT******************* */
+async function getDetailedFilterUstensil() {
   getDataRecipes();
-  const filterRender = document.querySelectorAll('.list_ustencils span');
-  const cards = document.querySelectorAll('span.filter-item-ustencils');
-  const searchQuery = document.getElementById('ustencils-input').value;
+  const filterRender = document.querySelectorAll('.list_ustensils span');
+  const cards = document.querySelectorAll('span.filter-item-ustensils');
+  const searchQuery = document.getElementById('ustensils-input').value;
   cards.forEach((card) => {
     if (card.innerText.toLowerCase().includes(searchQuery.toLowerCase())) {
       card.classList.remove('is-hidden');
@@ -79,16 +79,16 @@ async function getDetailedFilterUstencil() {
   });
   return (filterRender);
 }
-/** getInputUstencil is defined in tags_generator */
+/** getInputUstensil is defined in tags_generator */
 // eslint-disable-next-line no-unused-vars
-async function getInputUstencil() {
-  const searchInputUstencil = document.getElementById('ustencils-input');
-  searchInputUstencil.addEventListener('keyup', () => {
+async function getInputUstensil() {
+  const searchInputUstensil = document.getElementById('ustensils-input');
+  searchInputUstensil.addEventListener('keyup', () => {
     /** typingTimer is defined in recipes_input_selector */
     // eslint-disable-next-line no-undef
     clearTimeout(typingTimer);
     /** typingTimer is defined in recipes_input_selector */
     // eslint-disable-next-line no-undef
-    typingTimer = setTimeout(getDetailedFilterUstencil, typeInterval);
+    typingTimer = setTimeout(getDetailedFilterUstensil, typeInterval);
   });
 }
